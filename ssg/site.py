@@ -1,3 +1,4 @@
+from ssg import extensions
 import sys
 from pathlib import Path
 
@@ -27,6 +28,7 @@ class Site:
             )
 
     def build(self):
+        extensions.load_bundled()
         self.dest.mkdir(parents=True, exist_ok=True)
         for path in self.source.rglob("*"):
             if path.is_dir():
